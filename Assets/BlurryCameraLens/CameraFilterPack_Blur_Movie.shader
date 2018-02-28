@@ -1,4 +1,6 @@
-﻿Shader "CameraFilterPack/Blur_Movie" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "CameraFilterPack/Blur_Movie" {
         Properties 
         {
                 _MainTex ("Base (RGB)", 2D) = "white" {}
@@ -46,7 +48,7 @@
                           v2f vert(appdata_t IN)
             {
                 v2f OUT;
-                OUT.vertex = mul(UNITY_MATRIX_MVP, IN.vertex);
+                OUT.vertex = UnityObjectToClipPos(IN.vertex);
                 OUT.texcoord = IN.texcoord;
                 OUT.color = IN.color;
                  
